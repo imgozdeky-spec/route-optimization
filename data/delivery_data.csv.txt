@@ -1,0 +1,11 @@
+customer,x,y,demand
+Customer_1,10,20,5
+Customer_2,20,35,8
+Customer_3,15,10,4
+Customer_4,40,25,10
+Customer_5,35,45,7
+Customer_6,50,15,6
+Customer_7,60,30,9
+Customer_8,55,50,5
+Customer_9,25,55,12
+Customer_10,45,60,8

@@ -1,0 +1,32 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load delivery data
+data = pd.read_csv("../data/delivery_data.csv")
+
+# Display dataset
+print("Delivery Data:")
+print(data)
+
+# Plot customer locations
+plt.figure(figsize=(8, 6))
+
+plt.scatter(
+    data["x"],
+    data["y"],
+    s=data["demand"] * 20
+)
+
+for _, row in data.iterrows():
+    plt.annotate(
+        row["customer"],
+        (row["x"], row["y"])
+    )
+
+plt.title("Customer Locations")
+plt.xlabel("X Coordinate")
+plt.ylabel("Y Coordinate")
+plt.grid(True)
+
+plt.savefig("../outputs/customer_locations.png")
+plt.show()

@@ -1,0 +1,35 @@
+import pandas as pd
+import math
+
+# Load delivery data
+data = pd.read_csv("../data/delivery_data.csv")
+
+
+def calculate_distance(point1, point2):
+    """Calculate Euclidean distance between two points."""
+    return math.sqrt(
+        (point1["x"] - point2["x"]) ** 2
+        + (point1["y"] - point2["y"]) ** 2
+    )
+
+
+# Depot location
+depot = {"x": 0, "y": 0}
+
+# Calculate distance from depot to each customer
+data["distance_from_depot"] = data.apply(
+    lambda row: calculate_distance(depot, row),
+    axis=1
+)
+
+# Sort customers by distance
+optimized_route = data.sort_values(
+    by="distance_from_depot"
+)
+
+print("Suggested Delivery Route:")
+print(
+    optimized_route[
+        ["customer", "x", "y", "demand", "distance_from_depot"]
+    ]
+)
